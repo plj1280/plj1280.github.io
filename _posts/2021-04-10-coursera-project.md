@@ -45,7 +45,7 @@ Then, I used the top 5 categories to get the restaurant supply density, shown in
 
 ## Analysis
 #### Correlation Analysis
-As we saw in the maps previously, there appeared to be some correlations among the features. First, a simply plotted the correlation matrix as a heatmap to get an overview of the relationships.
+As we saw in the maps previously, there appeared to be some correlations among the features. First, I simply plotted the correlation matrix as a heatmap to get an overview of the relationships.
 ![figm1](/images/figm1.png)
 
 The largest correlations are education with income, and education with ethnicity, both at 0.5.
@@ -53,4 +53,4 @@ Income also shows a large negative correlation (-0.39) with population density.
 Venue density shows small to moderate correlations with all features except median age.
 
 Since there were some moderate correlations between our features, I calculated the principal components of the standardized feature set to see if there were redundancies I should remove to reduce the dimensionality.
-The smallest component explained 7% of the total variance, so I decided that the variance was well-enough spread across our features to proceed without projection onto the principal components.
+The smallest component explained 7% of the total variance, so I decided that the variance was well-enough spread across the features to proceed without projection onto the principal components.
