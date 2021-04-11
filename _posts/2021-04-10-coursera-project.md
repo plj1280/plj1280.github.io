@@ -26,4 +26,15 @@ Conveniently, the US Census Bureau also has a [REST API service](https://www.cen
 
 {% include fig1.html %}
 
-  
+You can already make out some interesting geographic patterns in the data. There's a large cluster of non-white population in the southeast, and smaller clusters in the center. There's some clusters of high-percentage white population in the north and southwest, and the rest fall into the range between 20%-70%. Interestingly, income seems to vary on smaller scales than education or ethnicity. Education and income seem correlated, and both are maybe weakly correlated with ethnicity. I'll return to these correlations later in the analysis
+
+#### Foursquare Venue Data
+I wanted to predict demand for Chipotle, but it turns out that _supply_ is much easier to measure. I could simply count up the number of restaurants in a given area. Then, we just proceed with the assumption that the actual supply roughly indicates the demand. To predict demand specifically for Chipotle, it would probably be best to use the supply of Chipotle. However, existing Chipotle locations in Queens are just too sparse to be a useful measure throughout the borough. Instead, I decided to consider the supply of "Chipotle-like" restaurants.
+
+Originally, I was going to manually select known competitors of Chipotle to serve as the measure of demand. However, this proved tedious and the results were still too sparse. Instead, I decided to include restaurants based on similarities in customer-base by leveraging the Foursquare data. The method was as follows:
+1. Select all Chipotles in Queens
+2. For each Chipotle, find all the user-created lists they are a part of
+3. For all lists, count up the venue categories that occur
+4. For each tract, count the number of venues within a certain radius that belong to one of the most frequently occurring categories
+The top 10 most frequently occurring venue categories are shown below:
+<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th>Categories</th>\n      <th>Count</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Mexican Restaurant</td>\n      <td>706</td>\n    </tr>\n    <tr>\n      <td>Asian Restaurant</td>\n      <td>319</td>\n    </tr>\n    <tr>\n      <td>Bar</td>\n      <td>122</td>\n    </tr>\n    <tr>\n      <td>Pizza Place</td>\n      <td>100</td>\n    </tr>\n    <tr>\n      <td>American Restaurant</td>\n      <td>96</td>\n    </tr>\n    <tr>\n      <td>Italian Restaurant</td>\n      <td>94</td>\n    </tr>\n    <tr>\n      <td>Food &amp; Drink Shop</td>\n      <td>92</td>\n    </tr>\n    <tr>\n      <td>Vegetarian / Vegan Restaurant</td>\n      <td>81</td>\n    </tr>\n    <tr>\n      <td>Seafood Restaurant</td>\n      <td>79</td>\n    </tr>\n    <tr>\n      <td>Dessert Shop</td>\n      <td>73</td>\n    </tr>\n  </tbody>\n</table>
