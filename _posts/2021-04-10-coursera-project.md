@@ -74,8 +74,8 @@ The rest of the large deviation tracts are more scattered, with the most notable
 #### Linear Regression
 Next, I created a linear regression model to predict venue density from the demographic data.
 I ran a grid search with 10-fold cross-validation over regularization parameter and polynomial degree.
-As shown in the following figure none of the models fit the data particularly well, with a max mean $R^2$ of 0.17.
-The best combination of high mean $R^2$ and relatively low standard deviation was the model with polynomial degree 2 and regularization parameter 100.
+As shown in the following figure none of the models fit the data particularly well, with a max mean R<sup>2</sup> of 0.18.
+The best combination of high mean R<sup>2</sup> and relatively low standard deviation was the model with polynomial degree 2 and regularization parameter 100.
 I trained that model on the entire dataset and then picked out the census tracts with large negative residuals
 ![figm3](/images/figm3.png)
 
