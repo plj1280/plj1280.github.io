@@ -36,5 +36,9 @@ Originally, I was going to manually select known competitors of Chipotle to serv
 2. For each Chipotle, find all the user-created lists they are a part of
 3. For all lists, count up the venue categories that occur
 4. For each tract, count the number of venues within a certain radius that belong to one of the most frequently occurring categories
+
 The top 10 most frequently occurring venue categories are shown below:
-<table border="1" class="dataframe">\n  <thead>\n    <tr style="text-align: right;">\n      <th>Categories</th>\n      <th>Count</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Mexican Restaurant</td>\n      <td>706</td>\n    </tr>\n    <tr>\n      <td>Asian Restaurant</td>\n      <td>319</td>\n    </tr>\n    <tr>\n      <td>Bar</td>\n      <td>122</td>\n    </tr>\n    <tr>\n      <td>Pizza Place</td>\n      <td>100</td>\n    </tr>\n    <tr>\n      <td>American Restaurant</td>\n      <td>96</td>\n    </tr>\n    <tr>\n      <td>Italian Restaurant</td>\n      <td>94</td>\n    </tr>\n    <tr>\n      <td>Food &amp; Drink Shop</td>\n      <td>92</td>\n    </tr>\n    <tr>\n      <td>Vegetarian / Vegan Restaurant</td>\n      <td>81</td>\n    </tr>\n    <tr>\n      <td>Seafood Restaurant</td>\n      <td>79</td>\n    </tr>\n    <tr>\n      <td>Dessert Shop</td>\n      <td>73</td>\n    </tr>\n  </tbody>\n</table>
+{% include table1.html %}
+
+Then, I used the top 5 categories to get the restaurant supply density, shown in the following map:
+{% include fig2.html %}
