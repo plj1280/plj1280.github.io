@@ -58,10 +58,23 @@ The smallest component explained 7% of the total variance, so I decided that the
 #### Cluster Analysis
 Now, I'll finally get to one of the methods I used to try to answer the original question. Basically, I wanted to find locations where I expect there to be relatively high demand for Chipotle, and relatively low supply of competing restaurants. The first method I used was to cluster tracts by similarity in demographics, and then look for tracts with large, negative deviations from their cluster mean. The idea is, tracts in the same cluster should have similar demands due to demographic similarity, so a lower supply than expected might mean a good opportunity.
 
-I chose to go with a simple k-means clusterings with 4 clusters, based on diminishing returns for higher cluster numbers. The results are shown in the following map:
+I chose to go with a simple k-means clusterings with 4 clusters, based on diminishing returns for higher cluster numbers. The results are shown in the following map and table:
 
 {% include fig4.html %}
+{% include table1.html %}
 
 Next, the negative cluster deviations:
 
 {% include fig5.html %}
+
+The largest deviation occurs in the center of the map, next to the southeast end of Flushing Meadows Park.
+A band of deviation extends east from this point. There's a similar, but less intense band running along the northern border of the borough.
+The rest of the large deviation tracts are more scattered, with the most notable occurring in the western and northwestern sections.
+
+#### Linear Regression
+Next, I created a linear regression model to predict venue density from the demographic data.
+I ran a grid search with 10-fold cross-validation over regularization parameter and polynomial degree.
+As shown in the following figure none of the models fit the data particularly well, with a max mean $R^2$ of 0.17.
+The best combination of high mean $R^2$ and relatively low standard deviation was the model with polynomial degree 2 and regularization parameter 100.
+I trained that model on the entire dataset and then picked out the census tracts with large negative residuals
+[figm3](/images/figm3.png)
