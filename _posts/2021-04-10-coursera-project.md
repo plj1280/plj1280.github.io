@@ -54,3 +54,14 @@ Venue density shows small to moderate correlations with all features except medi
 
 Since there were some moderate correlations between our features, I calculated the principal components of the standardized feature set to see if there were redundancies I should remove to reduce the dimensionality.
 The smallest component explained 7% of the total variance, so I decided that the variance was well-enough spread across the features to proceed without projection onto the principal components.
+
+#### Cluster Analysis
+Now, I'll finally get to one of the methods I used to try to answer the original question. Basically, I wanted to find locations where I expect there to be relatively high demand for Chipotle, and relatively low supply of competing restaurants. The first method I used was to cluster tracts by similarity in demographics, and then look for tracts with large, negative deviations from their cluster mean. The idea is, tracts in the same cluster should have similar demands due to demographic similarity, so a lower supply than expected might mean a good opportunity.
+
+I chose to go with a simple k-means clusterings with 4 clusters, based on diminishing returns for higher cluster numbers. The results are shown in the following map:
+
+{% include fig4.html %}
+
+Next, the negative cluster deviations:
+
+{% include fig5.html %}
