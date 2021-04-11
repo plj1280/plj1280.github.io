@@ -61,7 +61,7 @@ Now, I'll finally get to one of the methods I used to try to answer the original
 I chose to go with a simple k-means clusterings with 4 clusters, based on diminishing returns for higher cluster numbers. The results are shown in the following map and table:
 
 {% include fig4.html %}
-{% include table1.html %}
+{% include table2.html %}
 
 Next, the negative cluster deviations:
 
@@ -77,7 +77,7 @@ I ran a grid search with 10-fold cross-validation over regularization parameter 
 As shown in the following figure none of the models fit the data particularly well, with a max mean $R^2$ of 0.17.
 The best combination of high mean $R^2$ and relatively low standard deviation was the model with polynomial degree 2 and regularization parameter 100.
 I trained that model on the entire dataset and then picked out the census tracts with large negative residuals
-[figm3](/images/figm3.png)
+![figm3](/images/figm3.png)
 
 {% include fig6.html %}
 
