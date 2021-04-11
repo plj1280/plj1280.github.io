@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Determining the Optimal Location for a new Chipotle Restaurant in Queens, NY
 ---
 ## Introduction
