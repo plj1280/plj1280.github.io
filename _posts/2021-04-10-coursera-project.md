@@ -1,5 +1,6 @@
 ---
 title: Determining the Optimal Location for a new Chipotle Restaurant in Queens, NY
+layout: default
 ---
 ## Introduction
 For my capstone project for the IBM Data Science Certification, I used demographic data from the US Census Bureau and venue data from Foursquare to try to determine attractive candidate locations for a new Chipotle restaurant.
