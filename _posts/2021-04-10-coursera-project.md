@@ -78,3 +78,19 @@ As shown in the following figure none of the models fit the data particularly we
 The best combination of high mean $R^2$ and relatively low standard deviation was the model with polynomial degree 2 and regularization parameter 100.
 I trained that model on the entire dataset and then picked out the census tracts with large negative residuals
 [figm3](/images/figm3.png)
+
+{% include fig6.html %}
+
+The residuals show a similar pattern as the cluster deviations, with notable bands running east from the center.
+For the residuals the cutoff is sharper and fewer scattered tracts appear.
+
+## Results and Conclusion
+The final result is the following figure, which shows the existing Chipotle locations overlayed on maps of our two measures of unmet demand. Stakeholders could use this map to identify promising areas where there is high demand, low competition, and no existing locations. On first inspection, the band running east from Flushing Meadows Park, and the band to the north of that, seem like excellent candidates since they show up in both models of unmet demand and there are no Chipotle locations in the northeast quadrant of the map.
+
+Obviously making a decision on opening a new location requires more information than was considered here, including company financials, real estate price and availability, and proximity to transportation. Nevertheless, the results presented here could be useful for identifying some areas to do more detailed research and analysis on.
+
+{% include figure7.html %}
+
+This concludes my post about my data science project. Thanks for reading!
+
+If you have any questions about the APIs used or the data analysis and visualizations, check out the [Jupyter notebook](https://github.com). Otherwise, feel free to send comments or questions to me at plj1280 at gmail.
