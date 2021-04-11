@@ -2,6 +2,7 @@
 title: Determining the Optimal Location for a new Chipotle Restaurant in Queens, NY
 layout: default
 ---
+{% include cdn.html%}
 # {{page.title}}
 ## Introduction
 For my capstone project for the IBM Data Science Certification, I used demographic data from the US Census Bureau and venue data from Foursquare to try to determine attractive candidate locations for a new Chipotle restaurant.
@@ -23,5 +24,6 @@ The idea is to use these variables to predict demand for Chipotle. But first, I 
 #### Census Tract Geometry
 Conveniently, the US Census Bureau also has a [REST API service](https://www.census.gov/data/developers/data-sets/TIGERweb-map-service.html) to return geospatial and geometry data for all the geographical divisions the census uses. The API can return the data in the geoJSON format, so I was able to plug it directly into Plotly to draw choropleth maps of the census tracts. So, without further adieu, here are some maps showing census data for census tracts in Queens, NY:
 
+{% include fig1.html %}
 
   
