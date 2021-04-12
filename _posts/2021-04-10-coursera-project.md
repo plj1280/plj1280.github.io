@@ -77,7 +77,7 @@ I ran a grid search with 10-fold cross-validation over regularization parameter 
 As shown in the following figure none of the models fit the data particularly well, with a max mean R<sup>2</sup> of 0.18.
 The best combination of high mean R<sup>2</sup> and relatively low standard deviation was the model with polynomial degree 2 and regularization parameter 100.
 I trained that model on the entire dataset and then picked out the census tracts with large negative residuals
-{% comment %}
+
 ![figm3](/images/figm3.png)
 {% include fig6.html %}
 
@@ -94,4 +94,3 @@ Obviously making a decision on opening a new location requires more information 
 This concludes my post about my data science project. Thanks for reading!
 
 If you have any questions about the APIs used or the data analysis and visualizations, check out the [Jupyter notebook](https://github.com). Otherwise, feel free to send comments or questions to me at plj1280 at gmail.
-{% endcomment %}
