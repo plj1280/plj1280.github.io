@@ -90,7 +90,7 @@ The final result is the following figure, which shows the existing Chipotle loca
 
 Obviously making a decision on opening a new location requires more information than was considered here, including company financials, real estate price and availability, and proximity to transportation. Nevertheless, the results presented here could be useful for identifying some areas to do more detailed research and analysis on.
 
-{% include figure7.html %}
+{% include fig7.html %}
 
 This concludes my post about my data science project. Thanks for reading!
 
