@@ -77,8 +77,9 @@ I ran a grid search with 10-fold cross-validation over regularization parameter 
 As shown in the following figure none of the models fit the data particularly well, with a max mean R<sup>2</sup> of 0.18.
 The best combination of high mean R<sup>2</sup> and relatively low standard deviation was the model with polynomial degree 2 and regularization parameter 100.
 I trained that model on the entire dataset and then picked out the census tracts with large negative residuals
+{% comment %}
 ![figm3](/images/figm3.png)
-
+{% endcomment %}
 {% include fig6.html %}
 
 The residuals show a similar pattern as the cluster deviations, with notable bands running east from the center.
