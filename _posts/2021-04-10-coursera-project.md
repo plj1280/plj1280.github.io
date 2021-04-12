@@ -61,7 +61,7 @@ Now, I'll finally get to one of the methods I used to try to answer the original
 I chose to go with a simple k-means clusterings with 4 clusters, based on diminishing returns for higher cluster numbers. The results are shown in the following map and table:
 
 {% include fig4.html %}
-{% include table1.html %}
+{% include table2.html %}
 
 Next, the negative cluster deviations:
 
