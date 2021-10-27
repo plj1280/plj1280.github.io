@@ -45,8 +45,72 @@ function App() {
             setCount(c=>c+1);
         }, 1000);
     });
+
+    return (
+        <div>
+            <Counter count={0}></Counter>
+        </div>
+    )
 }
 ```
+The App updates its "count" state every second, triggering a re-render of itself and its child Counter component. As shown by the console printout, the Counter render function executes every second, even though it does not depend on the state variable and its props have not changed. Note that React correctly determines the browser DOM does not need to be updated, so this excessive re-rendering is only problematic if the render functions are expensive or cause side effects.
+
+##### Pitfall: Defining components within a component
+```JavaScript
+function App() {
+    console.log("Rendering App");
+    const [count, setCount] = useState(0);
+    useEffect(()=>{
+        setInterval(()=>{
+            setCount(c=>c+1);
+        }, 1000);
+    });
+
+    function Counter(props) {
+        console.log("Rendering Counter");
+        return (
+            <div>{props.count}</div>
+        )
+    }
+
+    return (
+        <div>
+            <Counter count={0}></Counter>
+        </div>
+    )
+
+```
+Due to the restrictions on data flow in React, if state information is used by multiple components it must live in a common ancestor. In a multi-layer hierarchy, this can lead to multiple layers of passing the same prop. I thought I would be clever and define child components *within* the render function of the parent so they could access the state information without it having to be passed as props. This will cause a full browser update of the child components every time the parent re-renders! This is because React compares component nodes in its reconciliation process by function references, and not just the raw HTML tree. If a function is redefined, it will be treated as a completely different component, even if the function definition and output are exactly the same.
 
 #### Misunderstanding: "Calling a state setter function always triggers a re-render"
-React will perform an equality check of the new and old states to determine if the function call will trigger a re-render. React seems to use a standard JavaScript 
+React will perform an equality check of the new and old states to determine if the function call will trigger a re-render. React seems to use a standard JavaScript strict equality test. This means if the state variable is a number or a string, React will re-render only if the value of the state has changed. If the state variable is an object, React will check if the object *reference* is the same. This means React will not trigger a re-render if you alter the properties of an object but keep using the same object.
+
+##### Pitfall: Setting the state with the same object as the previous state
+```JavaScript
+function Counter(props) {
+    console.log("Rendering Counter");
+    return (
+        <div>{props.count}</div>
+    )
+}
+
+function App() {
+    console.log("Rendering App");
+    const [count, setCount] = useState({count : 0});
+    useEffect(()=>{
+        setInterval(()=>{
+            setCount(old=>{
+                old.count +=1;
+                return old
+            });
+        }, 1000);
+    });
+
+    return (
+        <div>
+            <Counter count={count.count}></Counter>
+        </div>
+    )
+} 
+```
+It's tempting to use a big monolithic object as a state variable so you don't need to deal with multiple calls to useState and multiple setter functions, and instead just read and write to on object's properties. However, as mentioned, React will not detect the state change if the object reference stays the same. In order to use objects as state variables in React, you need to create a new copy of the object every time the state is updated. Object destructuring syntax is great for this use case. If you don't want to have to copy all state data with every change, you'll need to separate your data and use multiple useState calls.
